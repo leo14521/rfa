@@ -1,0 +1,6 @@
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+
+  [plugins.inputs]
+    # 압축 강도 설정 (기본값 추천)
+    gzip = true
