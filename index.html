@@ -201,15 +201,22 @@
 <body class="text-[#3A4035] antialiased">
 
 <aside class="side-guide hidden xl:flex">
+   
     <a href="#hero" class="guide-item active">
         <div class="guide-dot"></div>
         <span class="guide-label">홈</span>
     </a>
     
-    <a href="#targets" class="guide-item">
+    <a href="#rfa-tech" class="guide-item">
         <div class="guide-dot"></div>
-        <span class="guide-label">치료 대상</span>
+        <span class="guide-label">치료기술</span>
     </a>
+
+<a href="#treatment-guide" class="guide-item">
+    <div class="guide-dot"></div>
+    <span class="guide-label">체크리스트</span>
+</a>
+
 
     <a href="#comparison" class="guide-item">
         <div class="guide-dot"></div>
@@ -1860,44 +1867,56 @@ function filterGallery(category) {
         }, 6000);
 
 // [수정] 스크롤 스파이 로직 업데이트 (섹션 순서 동기화)
+// [수정] 스크롤 스파이 로직 업데이트 (HTML 섹션 배치 순서와 완벽 동기화)
 window.addEventListener('scroll', () => {
-    // 실제 HTML에 배치된 섹션 순서대로 배열 정의
+    // 1. HTML에 배치된 실제 섹션 ID 순서대로 배열 정의
     const sections = [
-        'hero', 
-        'targets', 
-        'comparison', 
-        'academic', 
-        'tour', 
-        'about', 
-        'process', 
-        'case', 
-        'reviews', 
-        'faq'
+        'hero',             // 홈
+        'rfa-tech',        // 치료시스템
+        'treatment-guide',  // 치료 대상 (내비게이터 #targets와 매칭)    
+        'comparison',       // 비교 분석
+        'about',            // 치료 원리
+        'academic',         // 의료진
+        'case',             // 치료 사례
+        'reviews',          // 치료 후기
+        'process',          // 시술 과정
+        'faq',              // FAQ
+        'tour'              // 시설 투어
     ];
     
     const guides = document.querySelectorAll('.side-guide .guide-item');
     let current = '';
 
+    // 2. 현재 화면에 보이는 섹션 감지
     sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {
             const rect = element.getBoundingClientRect();
-            // 화면 중앙(40% 지점)에 섹션이 걸치면 현재 섹션으로 인식
-            // (헤더 높이나 시선 높이를 고려해 0.4로 설정하는 것이 자연스러움)
+            // 화면 상단에서 30% 지점 ~ 화면 하단에 걸쳐있으면 현재 섹션으로 인식
+            // (반응형 헤더 높이 등을 고려하여 0.3~0.4 정도가 자연스럽습니다)
             if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
                 current = section;
             }
         }
     });
 
+    // 3. 내비게이터 활성화 (ID 불일치 예외 처리 포함)
     guides.forEach((guide) => {
         guide.classList.remove('active');
-        // href 속성값(#id)과 현재 섹션 id가 일치하면 활성화
-        if (guide.getAttribute('href') === `#${current}`) {
+        const href = guide.getAttribute('href').substring(1); // # 제거한 ID값
+
+        // 일반적인 경우 (ID와 href가 같을 때)
+        if (href === current) {
+            guide.classList.add('active');
+        } 
+        // 예외 처리: 내비게이터는 'targets'인데 실제 섹션 ID는 'treatment-guide'인 경우
+        else if (href === 'targets' && current === 'treatment-guide') {
             guide.classList.add('active');
         }
     });
 });
+
+
 // 미니 갤러리 슬라이더 기능
 function changeSlide(containerId, direction) {
     const container = document.getElementById(containerId);
@@ -1975,3 +1994,5 @@ document.addEventListener('DOMContentLoaded', () => {
     </script>
 </body>
 </html>
+
+
