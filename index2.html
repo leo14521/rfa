@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>트리니티 자궁근종 RFA 센터 - Global Standard</title>
+    <meta name="description" content="자궁을 보존하는 트리니티만의 독자적인 RFA 솔루션. 미국 FDA 승인 장비와 마스터 의료진의 하이엔드 자궁근종/선근증 치료 센터.">
+    <meta name="keywords" content="자궁근종, 자궁선근증, 하이푸, RFA, 자궁보존치료, 여성의원, 트리니티, 고주파용해술">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="트리니티 자궁근종 RFA 센터">
+    <meta property="og:description" content="자궁을 살리는 선택, 트리니티 RFA 시스템.">
+    <meta property="og:image" content="./images/og-image.jpg"> <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#3E522D', // Deep Kale (메인 브랜드 컬러)
+                            light: '#5B6D4A',   // Sub Green
+                            dark: '#2D3B1A',    // Hover Green
+                            bg: '#F1F4ED'       // Very Light Green Background
+                        },
+                        beige: {
+                            DEFAULT: '#F4EBE2', // Warm Beige (Point)
+                            site: '#FDFCFB',    // Main Background
+                            dim: '#E9E4DB'      // Border/Line
+                        },
+                        dark: {
+                            DEFAULT: '#1A1F16', // Black (Text/Bg)
+                            light: '#3A4035'    // Dark Gray (Body Text)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                        serif: ['Noto Serif KR', 'serif'],
+                    },
+                    letterSpacing: {
+                        tighter: '-0.05em',
+                        tight: '-0.025em',
+                        normal: '0',
+                        wide: '0.025em',
+                        wider: '0.05em',
+                        widest: '0.1em',
+                        ultra: '0.25em',
+                    },
+                    // 커스텀 키프레임 애니메이션
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'reveal-line': {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' },
+                        },
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' },
+                        },
+                        'scroll-down': {
+                            '0%': { transform: 'translateY(0)', opacity: '1' },
+                            '100%': { transform: 'translateY(15px)', opacity: '0' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'reveal-line': 'reveal-line 1.2s ease-out forwards',
+                        'scroll-loop': 'scroll-down 2s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 기본 설정 */
+        :root {
+            --nav-width: 80px;
+        }
+        
+        body { 
+            font-family: "Pretendard Variable", Pretendard, sans-serif; 
+            background-color: #FDFCFB; 
+            color: #1A1F16;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* 유틸리티 클래스 */
+        .serif { font-family: "Noto Serif KR", serif; }
+        .keep-all { word-break: keep-all; word-wrap: break-word; } /* 한글 줄바꿈 최적화 */
+        
+        /* 커스텀 스크롤바 (Webkit) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F1F4ED; }
+        ::-webkit-scrollbar-thumb { background: #5B6D4A; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3E522D; }
+
+        /* [Side Navigation Style]
+            PC 화면 좌측에 고정되는 닷(Dot) 네비게이션
+        */
+        .side-guide {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            mix-blend-mode: difference; /* 배경색에 따라 반전되어 보이게 설정 */
+        }
+
+        .guide-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            height: 24px; /* 호버 영역 확보 */
+        }
+
+        .guide-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0.5;
+        }
+
+        /* 활성화(Active) 상태 */
+        .guide-item.active .guide-dot {
+            height: 24px; /* 길쭉해지는 효과 */
+            opacity: 1;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* 호버 시 라벨 등장 */
+        .guide-label {
+            position: absolute;
+            left: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .guide-item:hover .guide-dot {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .guide-item:hover .guide-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* [Text Reveal Animation]
+            텍스트가 마스크 뒤에서 올라오는 효과
+        */
+        .text-reveal-container {
+            overflow: hidden;
+            display: block;
+        }
+        
+        .text-reveal {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease;
+        }
+        
+        .text-reveal.in-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 반응형 처리: 모바일에서는 사이드바 숨김 */
+        @media (max-width: 1024px) {
+            .side-guide { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <aside class="side-guide hidden xl:flex" id="side-nav">
+        <a href="#hero" class="guide-item active" data-target="hero">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Home</span>
+        </a>
+        <a href="#intro" class="guide-item" data-target="intro">
+            <div class="guide-dot"></div>
+            <span class="guide-label">About RFA</span>
+        </a>
+        <a href="#targets" class="guide-item" data-target="targets">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Checklist</span>
+        </a>
+        <a href="#insight" class="guide-item" data-target="insight">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Medical Insight</span>
+        </a>
+        <a href="#comparison" class="guide-item" data-target="comparison">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Comparison</span>
+        </a>
+        <a href="#academic" class="guide-item" data-target="academic">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Doctors</span>
+        </a>
+        <a href="#evidence" class="guide-item" data-target="evidence">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Clinical Evidence</span>
+        </a>
+        <a href="#process" class="guide-item" data-target="process">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Process & Review</span>
+        </a>
+        <a href="#location" class="guide-item" data-target="location">
+            <div class="guide-dot"></div>
+            <span class="guide-label">Location</span>
+        </a>
+    </aside>
+
+    <section id="hero" class="relative w-full h-[100dvh] min-h-[700px] flex flex-col justify-end lg:justify-center bg-[#1A1F16] overflow-hidden">
+        
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline poster="./images/action-surgery-monitor2.jpg" class="w-full h-full object-cover scale-105 opacity-80 transform transition-transform duration-[20s] hover:scale-100 ease-linear">
+                <source src="./images/action-surgery-monitor2.jpg" type="image/jpg">
+            </video>
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-[#151813] via-[#151813]/40 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#151813]/90 via-[#151813]/30 to-transparent z-10 hidden lg:block"></div>
+            <div class="absolute inset-0 bg-black/30 z-10 lg:hidden"></div>
+        </div>
+
+        <div class="relative z-20 max-w-7xl w-full mx-auto px-6 lg:px-8 h-full flex flex-col justify-center pb-24 lg:pb-0">
+            <div class="max-w-5xl pt-20 lg:pt-0 mx-auto lg:mx-0 text-center lg:text-left">
+                
+                <div class="inline-flex items-center justify-center lg:justify-start gap-3 mb-8 animate-fade-in-up opacity-0" style="animation-delay: 0.2s;">
+                    <span class="h-[1px] w-8 lg:w-12 bg-[#A2AD91]"></span>
+                    <span class="text-[#A2AD91] font-medium tracking-[0.25em] text-[10px] lg:text-xs uppercase border border-[#A2AD91]/30 px-3 py-1 rounded-full lg:border-none lg:p-0 backdrop-blur-sm">
+                        Premium Non-surgical Center
+                    </span>
+                </div>
+
+                <h1 class="font-serif text-[#F4EBE2] leading-[1.2] lg:leading-[1.1] mb-10 keep-all drop-shadow-xl">
+                    <div class="text-reveal-container">
+                        <div class="text-reveal text-3xl sm:text-5xl lg:text-[5rem] font-light opacity-90" data-delay="0.3">
+                            자궁을 없애는 치료가 아닌,
+                        </div>
+                    </div>
+                    <div class="text-reveal-container mt-2 lg:mt-4">
+                        <div class="text-reveal text-4xl sm:text-6xl lg:text-[5.5rem] font-medium" data-delay="0.5">
+                            자궁을 <span class="italic text-[#A2AD91] relative inline-block">
+                                살리는
+                                <svg class="absolute bottom-1 left-0 w-full h-2 text-[#A2AD91]/60" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="2" fill="none" class="animate-[reveal-line_1s_ease-out_1.2s_forwards] stroke-dasharray-100"/>
+                                </svg>
+                            </span> 선택이 있습니다.
+                        </div>
+                    </div>
+                    
+                    <div class="text-reveal-container mt-8 lg:mt-10">
+                        <div class="text-reveal flex flex-col lg:flex-row items-center lg:items-end gap-3 lg:gap-6" data-delay="0.8">
+                            <span class="text-[#A2AD91] text-xs lg:text-sm tracking-[0.3em] uppercase opacity-80 font-sans font-bold border-b border-[#A2AD91]/30 pb-1">
+                                Trinity Solution
+                            </span>
+                            <span class="text-xl lg:text-3xl text-white/90 font-light tracking-wide lg:border-l border-white/20 lg:pl-6 keep-all">
+                                자궁근종 비수술치료 – 트리니티의 자궁근종용해술, <strong>MYOBLATE™</strong>
+                            </span>
+                        </div>
+                    </div>
+                </h1>
+
+                <div class="flex flex-col lg:flex-row items-center gap-8 animate-fade-in-up opacity-0" style="animation-delay: 1.2s;">
+                    <p class="text-white/60 text-sm lg:text-lg font-light leading-relaxed hidden lg:block border-l border-white/20 pl-6">
+                        FDA 승인 장비와 마스터 의료진의 하이엔드 솔루션.<br>
+                        소중한 당신의 자궁을 지켜드립니다.
+                    </p>
+                    
+                    <a href="#consultation" class="group relative px-10 py-4 bg-[#F4EBE2] text-[#1A1F16] rounded-sm font-bold overflow-hidden transition-all hover:bg-white hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] duration-300">
+                        <span class="relative z-10 flex items-center gap-3 text-sm tracking-widest uppercase">
+                            상담 예약하기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300 mix-blend-overlay"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 opacity-60 mix-blend-screen animate-fade-in-up" style="animation-delay: 1.5s;">
+            <span class="text-[9px] text-white tracking-[0.3em] uppercase font-light">Scroll Down</span>
+            <div class="w-[24px] h-[40px] border border-white/50 rounded-full flex justify-center pt-2">
+                <div class="w-[2px] h-[6px] bg-white rounded-full animate-scroll-loop"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 파트1 -->
+
+    <section id="intro" class="relative py-24 lg:py-40 bg-white overflow-hidden">
+        
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-[0.03]">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3E522D" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start mb-24 lg:mb-32">
+                
+                <div class="lg:w-1/2 reveal-on-scroll">
+                    <span class="text-primary font-bold tracking-[0.3em] text-xs lg:text-sm uppercase mb-6 block border-l-2 border-primary pl-4">
+                        Non-surgical Solution
+                    </span>
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-dark leading-[1.2] lg:leading-[1.15] mb-8 keep-all font-medium">
+                        전신마취 없이,<br>
+                        흉터 없이,<br>
+                        <span class="text-primary italic relative inline-block">
+                            통증 없이.
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-beige rounded-full -z-10 mix-blend-multiply opacity-80 animate-pulse-slow"></div>
+                        </span>
+                    </h2>
+
+                    <p class="text-xl text-[#3A4035] font-medium leading-relaxed keep-all opacity-80">
+                        미국 FDA 승인 장비와 마스터 의료진의 노하우로<br class="hidden lg:block">
+                        당신의 소중한 일상을 <span class="text-primary font-bold border-b border-primary/30">당일에</span> 돌려드립니다.
+                    </p>
+                </div>
+
+                <div class="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    
+                    <div class="group bg-[#FBFBFA] p-8 rounded-3xl border border-beige/50 hover:border-primary/30 hover:shadow-xl transition-all duration-500 cursor-default">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="moon" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-dark mb-2">Conscious<br>Sedation</h3>
+                        <p class="text-sm text-[#6B7264] leading-relaxed keep-all">
+                            전신마취가 아닌 편안한 수면 마취로 신체 부담을 최소화합니다.
+                        </p>
+                    </div>
+
+                    <div class="group bg-[#FBFBFA] p-8 rounded-3xl border border-beige/50 hover:border-primary/30 hover:shadow-xl transition-all duration-500 cursor-default relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-bl-xl">POINT</div>
+                        
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="scan-face" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-dark mb-2">Scar-less<br>Touch</h3>
+                        <p class="text-sm text-[#6B7264] leading-relaxed keep-all">
+                            질을 통해 접근하므로 복부에 흉터가 전혀 남지 않습니다.
+                        </p>
+                    </div>
+
+                    <div class="group bg-[#FBFBFA] p-8 rounded-3xl border border-beige/50 hover:border-primary/30 hover:shadow-xl transition-all duration-500 cursor-default">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="heart-pulse" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-dark mb-2">Pain<br>Minimized</h3>
+                        <p class="text-sm text-[#6B7264] leading-relaxed keep-all">
+                            정상 조직 손상을 피하고 병변만 타격하여 통증이 적습니다.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E9E4DB] to-transparent mb-24 lg:mb-32 reveal-on-scroll"></div>
+
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-32 items-center">
+                
+                <div class="lg:w-5/12 w-full relative reveal-on-scroll-left">
+                    <div class="relative w-full aspect-[4/5] rounded-t-[10rem] rounded-b-[2rem] overflow-hidden shadow-2xl group">
+                        
+                        <img src="./images/parallax-clinic.jpg" alt="MYOBLATE Technology" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-dark/90 via-dark/50 to-transparent p-10 text-white">
+                            <p class="text-[#A2AD91] text-xs font-bold uppercase tracking-widest mb-2">Core Technology</p>
+                            <h3 class="text-3xl font-serif font-bold mb-2">MYOBLATE™</h3>
+                            <p class="text-white/70 text-sm font-light leading-relaxed">
+                                자궁을 보존하는 혁신적인<br>고주파 치료 옵션
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-20 -right-6 lg:-right-12 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 max-w-[200px] animate-float-slow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>
+                            <span class="text-xs font-bold text-primary uppercase tracking-wider">Approved</span>
+                        </div>
+                        <p class="text-sm font-bold text-dark leading-tight">
+                            자궁근종·선근증<br>생리과다·빈혈 개선
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12 w-full reveal-on-scroll-right">
+                    <h3 class="text-3xl md:text-4xl lg:text-5xl font-serif text-dark leading-tight mb-10 keep-all">
+                        "모든 근종에<br>
+                        <span class="text-primary italic border-b-2 border-primary/20 pb-1">같은 치료</span>를 하지는 않습니다."
+                    </h3>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 mt-2">
+                                <div class="w-2 h-12 bg-primary/20 rounded-full relative">
+                                    <div class="absolute top-0 left-0 w-full h-1/2 bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-dark mb-3">개인 맞춤형 정밀 치료</h4>
+                                <p class="text-[#6B7264] leading-loose keep-all">
+                                    근종의 <strong>크기, 위치, 증상</strong>에 따라 치료법은 달라야 합니다. 
+                                    트리니티는 무조건적인 시술을 권하지 않습니다. 
+                                    정밀 진단을 통해 환자분의 자궁 환경에 가장 적합한 최적의 솔루션을 제안합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 mt-2">
+                                <div class="w-2 h-12 bg-primary/20 rounded-full relative">
+                                    <div class="absolute top-0 left-0 w-full h-1/2 bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-dark mb-3">MYOBLATE™ 솔루션</h4>
+                                <p class="text-[#6B7264] leading-loose keep-all">
+                                    MYOBLATE는 자궁근종 및 선근증으로 인한 <strong>생리과다와 빈혈</strong>을 해결하고, 
+                                    여성의 상징인 자궁을 온전히 보존하는 혁신적인 비수술 치료 옵션입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 flex flex-wrap gap-4">
+                        <a href="#targets" class="inline-flex items-center gap-2 px-8 py-4 bg-dark text-white rounded-sm font-bold text-sm tracking-wide hover:bg-primary transition-colors duration-300">
+                            치료 대상 확인하기
+                        </a>
+                        <a href="#comparison" class="inline-flex items-center gap-2 px-8 py-4 border border-dark/20 text-dark rounded-sm font-bold text-sm tracking-wide hover:border-primary hover:text-primary transition-colors duration-300">
+                            수술 vs 시술 비교
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // GSAP 플러그인 등록
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 공통 리빌 애니메이션 (Fade Up)
+            const revealElements = document.querySelectorAll(".reveal-on-scroll");
+            revealElements.forEach(element => {
+                gsap.fromTo(element, 
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1, y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 85%", // 화면 하단 85% 지점에서 시작
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // 좌측에서 등장
+            const leftElements = document.querySelectorAll(".reveal-on-scroll-left");
+            leftElements.forEach(element => {
+                gsap.fromTo(element, 
+                    { opacity: 0, x: -50 },
+                    {
+                        opacity: 1, x: 0,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 85%"
+                        }
+                    }
+                );
+            });
+
+            // 우측에서 등장
+            const rightElements = document.querySelectorAll(".reveal-on-scroll-right");
+            rightElements.forEach(element => {
+                gsap.fromTo(element, 
+                    { opacity: 0, x: 50 },
+                    {
+                        opacity: 1, x: 0,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 85%"
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+
+    <!-- 파트2 -->
+
+    <section id="targets" class="relative py-24 lg:py-40 bg-[#FBFBFA] overflow-hidden">
+        
+        <div class="absolute top-0 right-0 text-[10rem] lg:text-[15rem] font-black text-[#E9E4DB]/20 leading-none select-none pointer-events-none z-0 hidden lg:block font-sans opacity-50 transform translate-x-1/4 -translate-y-1/4">
+            CHECK<br>LIST
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center mb-16 lg:mb-24 reveal-on-scroll">
+                <span class="text-primary font-bold tracking-[0.6em] text-xs uppercase mb-6 block">Recommendation</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-[#1A1F16] leading-tight mb-6 font-medium break-keep">
+                    이런 분들에게<br>
+                    <span class="text-primary italic relative inline-block">
+                        고주파 자궁근종용해술
+                        <svg class="absolute bottom-1 left-0 w-full h-3 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                    </span>을 고려합니다.
+                </h2>
+                <p class="text-[#6B7264] text-lg font-light">나에게 맞는 치료법인지 확인해보세요.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-20 max-w-5xl mx-auto">
+                
+                <div class="group bg-white p-8 lg:p-12 rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 reveal-on-scroll-left cursor-default relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-[#F1F4ED] rounded-bl-full transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-[#F1F4ED] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 shadow-inner">
+                            <i data-lucide="droplets" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[#1A1F16] mb-3 group-hover:text-primary transition-colors">생리양이 점점 많아지고 있다</h3>
+                        <p class="text-[#6B7264] text-sm lg:text-base leading-relaxed keep-all font-light">
+                            생리 기간이 길어지거나, 대형 패드로도 감당하기 어려운 과다 월경 증상이 지속되는 경우.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-8 lg:p-12 rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 reveal-on-scroll-right cursor-default relative overflow-hidden" style="transition-delay: 0.1s;">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-[#F1F4ED] rounded-bl-full transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-[#F1F4ED] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 shadow-inner">
+                            <i data-lucide="battery-warning" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[#1A1F16] mb-3 group-hover:text-primary transition-colors">빈혈로 피로감이 심하다</h3>
+                        <p class="text-[#6B7264] text-sm lg:text-base leading-relaxed keep-all font-light">
+                            이유 없는 어지러움, 두통, 만성 피로가 지속되어 일상 생활에 지장을 주는 경우.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-8 lg:p-12 rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 reveal-on-scroll-left cursor-default relative overflow-hidden" style="transition-delay: 0.2s;">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-[#F1F4ED] rounded-bl-full transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-[#F1F4ED] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 shadow-inner">
+                            <i data-lucide="heart-handshake" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[#1A1F16] mb-3 group-hover:text-primary transition-colors">자궁은 가능한 한 보존하고 싶다</h3>
+                        <p class="text-[#6B7264] text-sm lg:text-base leading-relaxed keep-all font-light">
+                            적출 수술에 대한 두려움이 있거나, 향후 임신 계획 등 가임력 보존을 강력히 원하시는 경우.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-8 lg:p-12 rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 reveal-on-scroll-right cursor-default relative overflow-hidden" style="transition-delay: 0.3s;">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-[#F1F4ED] rounded-bl-full transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-[#F1F4ED] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 shadow-inner">
+                            <i data-lucide="search" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[#1A1F16] mb-3 group-hover:text-primary transition-colors">수술 외 다른 치료 옵션을 알고 싶다</h3>
+                        <p class="text-[#6B7264] text-sm lg:text-base leading-relaxed keep-all font-light">
+                            전신 마취나 개복 수술 없이 안전하게 증상을 개선하고 빠른 회복을 원하시는 경우.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="insight" class="py-20 lg:py-32 bg-[#1A1F16] text-white relative">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="bg-white/5 border border-white/10 rounded-[3rem] p-8 lg:p-16 backdrop-blur-sm relative overflow-hidden reveal-on-scroll">
+                <i data-lucide="quote" class="absolute top-10 left-10 w-20 h-20 text-white/5 rotate-180"></i>
+
+                <div class="relative z-10 flex flex-col lg:flex-row gap-12">
+                    
+                    <div class="lg:w-1/3 border-b lg:border-b-0 lg:border-r border-white/20 pb-8 lg:pb-0 lg:pr-12">
+                        <span class="text-[#A2AD91] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Medical Insight</span>
+                        <h4 class="text-2xl lg:text-3xl font-serif font-bold mb-6 leading-tight">
+                            치료 전,<br>
+                            <span class="text-[#A2AD91]">정확한 감별 진단</span>이<br>
+                            가장 중요합니다.
+                        </h4>
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-600 border-2 border-[#1A1F16] overflow-hidden">
+                                    <img src="./images/dr-jung.gif" class="w-full h-full object-cover" alt="Dr.Jung">
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-gray-600 border-2 border-[#1A1F16] overflow-hidden">
+                                    <img src="./images/dr-yang.gif" class="w-full h-full object-cover" alt="Dr.Yang">
+                                </div>
+                            </div>
+                            <div class="text-sm">
+                                <p class="font-bold text-white">Dr. Jung & Dr. Yang</p>
+                                <p class="text-[#A2AD91] text-xs">Representative Directors</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-2/3 space-y-8">
+                        <div>
+                            <h5 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-[#A2AD91]"></span> 우선 고려 대상
+                            </h5>
+                            <p class="text-white/80 text-sm lg:text-[15px] leading-7 lg:leading-8 font-light keep-all">
+                                “자궁이 전체적으로 커져 있는 <strong class="text-white font-medium border-b border-white/30">미만성 자궁근종, 자궁선근증</strong>에서 증상을 동반한 경우에서 우선적으로 고려할 수 있습니다. 
+                                특히 생리과다, 빈혈을 교정하는데 매우 효과적이며 치료이후 2-3개월 이내 대부분 호전되는 경과를 보입니다. 
+                                향후 임신을 계획하는 경우 근종의 크기, 위치에 따라서 치료법의 시행 결정은 달라질 수 있으며 정확한 영상학적 평가가 필요합니다.”
+                            </p>
+                        </div>
+
+                        <div class="bg-[#2D3B1A]/50 p-6 rounded-2xl border border-[#A2AD91]/30">
+                            <h5 class="text-sm font-bold text-[#FF8A8A] mb-2 flex items-center gap-2">
+                                <i data-lucide="alert-circle" class="w-4 h-4"></i> 주의사항 (수술적 치료 고려 대상)
+                            </h5>
+                            <p class="text-white/70 text-xs lg:text-sm leading-relaxed keep-all">
+                                “거대다발성자궁근종이거나 폐경이후 갑자기 자라는 근종, 자궁외측으로 돌출되어 있는 장막하 근종의 경우는 수술적 치료가 우선적으로 필요할 수 있습니다.”
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="py-24 lg:py-40 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center mb-20 lg:mb-32 reveal-on-scroll">
+                <span class="text-primary font-bold tracking-[0.6em] text-xs uppercase mb-6 block">Comparative Study</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#1A1F16] leading-tight mb-6">
+                    왜 <span class="text-primary italic">트리니티 RFA</span>인가?<br>
+                    결과의 차이가 증명합니다.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-stretch max-w-6xl mx-auto">
+                
+                <div class="p-10 lg:p-14 bg-[#F9F9F8] border border-[#E9E4DB] rounded-[3rem] flex flex-col group hover:border-gray-300 transition-all duration-500 reveal-on-scroll-left">
+                    <div class="flex items-center gap-6 mb-12 opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="p-4 bg-white rounded-2xl border border-[#E9E4DB] shadow-sm">
+                            <i data-lucide="scissors" class="w-8 h-8 text-gray-400"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-500 serif italic">일반 수술</h3>
+                    </div>
+                    
+                    <div class="mb-12 pb-12 border-b border-gray-200">
+                        <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-4">회복 시간</p>
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-6xl lg:text-7xl font-sans font-bold text-gray-300 tracking-tighter">4-8</span>
+                            <span class="text-2xl font-bold text-gray-400">주</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-4 font-medium px-1">일상 복귀까지 긴 시간이 소요됨</p>
+                    </div>
+
+                    <ul class="space-y-6 text-lg text-gray-500 font-medium">
+                        <li class="flex items-center gap-5">
+                            <i data-lucide="x-circle" class="w-6 h-6 flex-shrink-0 text-red-300"></i>
+                            <span>전신 마취 필수 및 신체 부담</span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <i data-lucide="x-circle" class="w-6 h-6 flex-shrink-0 text-red-300"></i>
+                            <span>복부 절개 및 영구적 흉터</span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <i data-lucide="x-circle" class="w-6 h-6 flex-shrink-0 text-red-300"></i>
+                            <span>자궁 적출 시 상실감 우려</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-10 lg:p-14 bg-[#F1F4ED] border-2 border-primary rounded-[3rem] flex flex-col relative shadow-[0_40px_80px_-20px_rgba(62,82,45,0.15)] transform md:-translate-y-8 z-10 reveal-on-scroll-right hover:-translate-y-10 transition-transform duration-500">
+                    
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-8 py-3 rounded-full shadow-lg tracking-[0.2em] uppercase italic whitespace-nowrap animate-bounce">
+                        Recommended
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mb-12">
+                        <div class="p-4 bg-white rounded-2xl shadow-md text-primary">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-[#1A1F16] serif italic">트리니티 RFA</h3>
+                    </div>
+
+                    <div class="mb-12 pb-12 border-b border-primary/10">
+                        <p class="text-[11px] text-primary font-black uppercase tracking-widest mb-4">회복 시간</p>
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-6xl lg:text-7xl font-sans font-bold text-[#1A1F16] tracking-tighter">1-2</span>
+                            <span class="text-2xl font-bold text-[#1A1F16]">일</span>
+                        </div>
+                        <p class="text-primary font-bold mt-4 text-sm bg-white/60 inline-block px-4 py-2 rounded-full border border-primary/10">
+                            * 시술 당일 또는 다음날 즉시 복귀
+                        </p>
+                    </div>
+
+                    <ul class="space-y-6 text-lg text-[#1A1F16] font-bold">
+                        <li class="flex items-center gap-5">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="decoration-primary/30 underline underline-offset-4">부담 없는 <strong>수면 마취</strong></span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="decoration-primary/30 underline underline-offset-4">질 접근으로 <strong>무흉터 시술</strong></span>
+                        </li>
+                        <li class="flex items-center gap-5">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="decoration-primary/30 underline underline-offset-4"><strong>가임력 완벽 보존</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 파트3 -->
+
+    <section id="academic" class="py-24 lg:py-40 bg-[#1A1F16] text-white relative overflow-hidden">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] bg-primary rounded-full blur-[250px] opacity-10 pointer-events-none z-0 mix-blend-screen"></div>
+        <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[200px] opacity-10 pointer-events-none z-0"></div>
+
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
+            
+            <div class="flex flex-col lg:flex-row justify-between items-end mb-16 lg:mb-24 gap-8">
+                <div class="reveal-on-scroll">
+                    <span class="text-[#A2AD91] font-bold tracking-[0.4em] text-xs uppercase mb-6 block">Medical Leadership</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-none">
+                        Master Directors
+                    </h2>
+                    <p class="text-white/60 text-lg font-light max-w-xl leading-relaxed keep-all">
+                        화려한 이력서보다 확실한 증명은 현장에 있습니다.<br>
+                        수천 건의 시술 경험을 보유한 두 명의 마스터가 직접 집도합니다.
+                    </p>
+                </div>
+
+                <div class="reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="inline-flex bg-white/5 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
+                        <button onclick="filterGallery('surgery')" id="filter-surgery" class="gallery-filter px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-[#DDE4D5] text-[#1A1F16] shadow-lg">
+                            의료진 전문성
+                        </button>
+                        <button onclick="filterGallery('lecture')" id="filter-lecture" class="gallery-filter px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 text-white/60 hover:text-white hover:bg-white/10">
+                            학술/강연 활동
+                        </button>
+                        <button onclick="filterGallery('care')" id="filter-care" class="gallery-filter px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 text-white/60 hover:text-white hover:bg-white/10">
+                            진료 철학
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gallery-surgery" class="gallery-group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 transition-all duration-700 ease-out relative z-10 opacity-100 translate-y-0">
+                
+                <div class="group relative rounded-[3rem] overflow-hidden bg-[#252A22] border border-white/5 hover:border-[#A2AD91]/50 transition-all duration-500 reveal-on-scroll-left h-[700px] lg:h-[800px] shadow-2xl">
+                    <div class="absolute inset-0 z-0">
+                        <img src="./images/dr-jung.gif" alt="Dr. Jung Nan-hee" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s] ease-in-out" onerror="this.src='https://placehold.co/800x1000/222/fff?text=Dr.+Jung'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1F16] via-[#1A1F16]/30 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#1A1F16]/80 via-transparent to-transparent"></div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-10 lg:p-14 z-10 flex flex-col justify-end h-full">
+                        <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                            <div class="flex flex-wrap gap-3 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                <span class="px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-wider rounded-full">Master Surgeon</span>
+                                <span class="px-3 py-1 bg-white/10 text-[#DDE4D5] text-[10px] font-bold uppercase tracking-wider rounded-full backdrop-blur-sm">Aesthetic Design</span>
+                            </div>
+
+                            <span class="text-[#A2AD91] font-bold tracking-[0.2em] text-xs uppercase mb-2 block">Representative Director</span>
+                            <h3 class="text-4xl lg:text-5xl font-serif font-bold text-white mb-6">Dr. 정난희</h3>
+                            
+                            <p class="text-white/80 text-lg font-light italic leading-relaxed border-l-2 border-[#A2AD91] pl-6 mb-8 keep-all">
+                                "환자의 몸을 내 몸처럼.<br>여성의 마음을 가장 잘 아는 섬세한 진료를 약속합니다."
+                            </p>
+
+                            <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <div class="pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                                        <h4 class="text-xs font-black text-[#A2AD91] uppercase tracking-[0.2em] mb-4">Major Careers</h4>
+                                        <ul class="space-y-3 text-sm text-white/70 font-light">
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>IFAAS (국제피부미용학회) 비수술여성성형부 교수</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>대한산부인과의사회 학술이사 / 하이푸연구회 총무이사</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>몽골/대만 RFA(고주파 절제술) 마스터 클래스 진행</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>방송: TV조선 &lt;유레카&gt;, 채널A 등 여성건강 자문</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-[3rem] overflow-hidden bg-[#252A22] border border-white/5 hover:border-[#A2AD91]/50 transition-all duration-500 reveal-on-scroll-right h-[700px] lg:h-[800px] shadow-2xl" style="transition-delay: 0.2s;">
+                    <div class="absolute inset-0 z-0">
+                        <img src="./images/dr-yang.gif" alt="Dr. Yang Ki-yeol" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s] ease-in-out" onerror="this.src='https://placehold.co/800x1000/333/fff?text=Dr.+Yang'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1F16] via-[#1A1F16]/30 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#1A1F16]/80 via-transparent to-transparent"></div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-10 lg:p-14 z-10 flex flex-col justify-end h-full">
+                        <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                            <div class="flex flex-wrap gap-3 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                <span class="px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-wider rounded-full">Menopause Expert</span>
+                                <span class="px-3 py-1 bg-white/10 text-[#DDE4D5] text-[10px] font-bold uppercase tracking-wider rounded-full backdrop-blur-sm">High-Tech Pioneer</span>
+                            </div>
+
+                            <span class="text-[#A2AD91] font-bold tracking-[0.2em] text-xs uppercase mb-2 block">Representative Director</span>
+                            <h3 class="text-4xl lg:text-5xl font-serif font-bold text-white mb-6">Dr. 양기열</h3>
+                            
+                            <p class="text-white/80 text-lg font-light italic leading-relaxed border-l-2 border-[#A2AD91] pl-6 mb-8 keep-all">
+                                "수만 건의 임상 경험으로 증명된 실력,<br>디테일의 차이가 결과의 차이를 만듭니다."
+                            </p>
+
+                            <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <div class="pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                                        <h4 class="text-xs font-black text-[#A2AD91] uppercase tracking-[0.2em] mb-4">Major Careers</h4>
+                                        <ul class="space-y-3 text-sm text-white/70 font-light">
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>경희대학교 의과대학 외래교수 / 산부인과 전문의</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>대한폐경학회 폐경 전문 과정 이수 (인증의)</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>저서: &lt;갱년기에 대해 의사가 가장 많이 듣는 질문&gt;</span>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#A2AD91] mt-0.5 flex-shrink-0"></i>
+                                                <span>방송: TvN &lt;슈퍼푸드&gt;, MBN &lt;특집다큐&gt; 자궁근종 자문</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="gallery-lecture" class="gallery-group absolute inset-0 z-0 opacity-0 pointer-events-none translate-y-10 transition-all duration-500 pt-[250px] px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full pb-24">
+                    <div class="relative rounded-3xl overflow-hidden group bg-dark/50 border border-white/10">
+                        <img src="./images/action-lecture-slide.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" onerror="this.src='https://placehold.co/600x400/333/fff?text=Lecture+1'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1F16] to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <span class="text-[#A2AD91] text-xs font-bold uppercase tracking-wider mb-2 block">Global Key Doctor</span>
+                            <h3 class="text-xl font-bold text-white mb-2">국제 마스터 클래스 강연</h3>
+                            <p class="text-white/60 text-sm">해외 의료진 대상 RFA 시술 노하우 전수</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-3xl overflow-hidden group bg-dark/50 border border-white/10">
+                        <img src="./images/action-lecture-main.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" onerror="this.src='https://placehold.co/600x400/333/fff?text=Lecture+2'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1F16] to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <span class="text-[#A2AD91] text-xs font-bold uppercase tracking-wider mb-2 block">Symposium</span>
+                            <h3 class="text-xl font-bold text-white mb-2">대한산부인과 학회 발표</h3>
+                            <p class="text-white/60 text-sm">최신 자궁 보존 치료 트렌드 발표</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-3xl overflow-hidden group bg-dark/50 border border-white/10">
+                        <img src="./images/action-lecture-network.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" onerror="this.src='https://placehold.co/600x400/333/fff?text=Network'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1F16] to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <span class="text-[#A2AD91] text-xs font-bold uppercase tracking-wider mb-2 block">Network</span>
+                            <h3 class="text-xl font-bold text-white mb-2">글로벌 의료 교류</h3>
+                            <p class="text-white/60 text-sm">세계적 수준의 의료 기술 교류 활동</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gallery-care" class="gallery-group absolute inset-0 z-0 opacity-0 pointer-events-none translate-y-10 transition-all duration-500 pt-[250px] px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full pb-24">
+                    <div class="relative rounded-3xl overflow-hidden bg-dark/50 border border-white/10 group">
+                        <img src="./images/action-care-explain.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" onerror="this.src='https://placehold.co/800x600/333/fff?text=Consultation'">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-0 left-0 p-10">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-3">1:1 Deep Consultation</h3>
+                            <p class="text-white/70 leading-relaxed max-w-md">환자의 라이프스타일까지 고려한 심층 상담으로 치료의 방향을 함께 결정합니다.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-3xl overflow-hidden bg-dark/50 border border-white/10 group">
+                        <img src="./images/action-care-recovery.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" onerror="this.src='https://placehold.co/800x600/333/fff?text=Recovery'">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-0 left-0 p-10">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-3">After Care System</h3>
+                            <p class="text-white/70 leading-relaxed max-w-md">시술 후 회복부터 정기적인 추적 관찰까지, 평생 주치의가 되어드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="case" class="py-24 lg:py-40 bg-[#FBFBFA] relative">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            
+            <div class="text-center mb-20 lg:mb-32 reveal-on-scroll">
+                <span class="text-primary font-bold tracking-[0.6em] text-xs uppercase mb-6 block">Clinical Evidence</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#1A1F16] leading-tight mb-6 font-medium">
+                    데이터로 증명하는<br>
+                    <span class="text-primary italic">놀라운 변화</span>
+                </h2>
+                <p class="text-[#6B7264] text-lg font-light">수치와 영상이 트리니티의 기술력을 증명합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative">
+                
+                <div class="hidden md:block absolute top-1/3 left-0 w-full h-[1px] border-t-2 border-dashed border-[#E9E4DB] -z-0"></div>
+
+                <div class="group bg-white rounded-[3rem] overflow-hidden border border-[#E9E4DB] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 reveal-on-scroll-left z-10">
+                    <div class="img-box aspect-[4/3] bg-[#1A1F16] relative overflow-hidden">
+                        <img src="./images/mri-before.jpg" alt="Before MRI" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 opacity-90" onerror="this.src='https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute top-4 left-4 bg-red-500/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Before</div>
+                    </div>
+                    <div class="p-10 text-center relative bg-white">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center border border-[#E9E4DB] shadow-lg z-10 group-hover:scale-110 transition-transform">
+                            <i data-lucide="scan-line" class="w-6 h-6 text-[#1A1F16]"></i>
+                        </div>
+                        <h4 class="text-2xl font-serif font-bold text-[#1A1F16] mb-4 mt-4">정밀 진단</h4>
+                        <p class="text-[#6B7264] font-light leading-relaxed keep-all">
+                            임신 준비 중 발견된<br>
+                            <strong class="text-primary font-bold border-b border-primary/20 pb-0.5">7cm 거대 근종</strong> 진단
+                        </p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-[3rem] overflow-hidden border border-[#E9E4DB] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 reveal-on-scroll z-10" style="transition-delay: 0.1s;">
+                    <div class="img-box aspect-[4/3] bg-[#1A1F16] relative overflow-hidden">
+                        <img src="./images/mri-after.jpg" alt="After MRI" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 opacity-90" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute top-4 left-4 bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">After</div>
+                    </div>
+                    <div class="p-10 text-center relative bg-white">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center border border-[#E9E4DB] shadow-lg z-10 group-hover:scale-110 transition-transform">
+                            <i data-lucide="activity" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="text-2xl font-serif font-bold text-[#1A1F16] mb-4 mt-4">치료 경과</h4>
+                        <p class="text-[#6B7264] font-light leading-relaxed keep-all">
+                            치료 10개월 후<br>
+                            <strong class="text-primary font-bold border-b border-primary/20 pb-0.5">2cm로 부피 90% 감소</strong> 확인
+                        </p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-[3rem] overflow-hidden border border-[#E9E4DB] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 reveal-on-scroll-right z-10" style="transition-delay: 0.2s;">
+                    <div class="img-box aspect-[4/3] bg-[#1A1F16] relative overflow-hidden">
+                        <img src="./images/ultrasound.jpg" alt="Pregnancy Ultrasound" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 opacity-90" onerror="this.src='https://images.unsplash.com/photo-1453847668162-40085a449a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute top-4 left-4 bg-[#A2AD91]/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Success</div>
+                    </div>
+                    <div class="p-10 text-center relative bg-white">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center border border-[#E9E4DB] shadow-lg z-10 group-hover:scale-110 transition-transform">
+                            <i data-lucide="baby" class="w-6 h-6 text-[#A2AD91]"></i>
+                        </div>
+                        <h4 class="text-2xl font-serif font-bold text-[#1A1F16] mb-4 mt-4">임신 성공</h4>
+                        <p class="text-[#6B7264] font-light leading-relaxed keep-all">
+                            치료 1년 후<br>
+                            <strong class="text-primary font-bold border-b border-primary/20 pb-0.5">자연 임신 및 건강한 출산</strong>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 lg:mt-32 border-t border-[#E9E4DB] pt-16 flex flex-col md:flex-row justify-center gap-16 lg:gap-32 text-center reveal-on-scroll">
+                <div>
+                    <div class="flex items-baseline justify-center gap-1 mb-2">
+                        <span class="text-5xl lg:text-6xl font-sans font-bold text-primary counter" data-target="5000">5,000</span>
+                        <span class="text-2xl text-primary font-serif">+</span>
+                    </div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#6B7264] font-bold">Successful Cases</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-center gap-1 mb-2">
+                        <span class="text-5xl lg:text-6xl font-sans font-bold text-primary counter" data-target="98.5">98.5</span>
+                        <span class="text-2xl text-primary font-serif">%</span>
+                    </div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#6B7264] font-bold">Symptom Relief Rate</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-center gap-1 mb-2">
+                        <span class="text-5xl lg:text-6xl font-sans font-bold text-primary counter" data-target="0">0</span>
+                        <span class="text-2xl text-primary font-serif">%</span>
+                    </div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#6B7264] font-bold">Permanent Scar</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 파트4 -->
+
+    <section id="process" class="py-24 lg:py-40 bg-white relative z-10 border-t border-[#E9E4DB]/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-end reveal-on-scroll">
+                <div>
+                    <span class="text-primary font-black tracking-[0.5em] text-xs uppercase mb-6 block">Process Flow</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-[#1A1F16] leading-tight">
+                        안전을 최우선으로 하는<br>
+                        <span class="text-primary italic relative inline-block">
+                            시술 프로세스
+                            <div class="absolute bottom-2 left-0 w-full h-3 bg-[#F1F4ED] -z-10"></div>
+                        </span>
+                    </h2>
+                </div>
+                <div class="lg:border-l-2 lg:border-primary/20 lg:pl-10">
+                    <p class="text-[#6B7264] text-lg font-light leading-relaxed keep-all">
+                        <strong class="text-[#1A1F16] font-bold">당일 입원, 당일 퇴원</strong>을 원칙으로 하며<br>
+                        환자분의 편안하고 빠른 일상 복귀를 위해 체계적인 케어 시스템을 운영합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative">
+                
+                <div class="group bg-[#FBFBFA] p-10 rounded-[2.5rem] border border-[#E9E4DB] hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 reveal-on-scroll cursor-default">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full uppercase tracking-wider border border-primary/5">Step 01</span>
+                        <div class="w-12 h-12 rounded-full bg-white border border-[#E9E4DB] flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                            <i data-lucide="layers" class="w-6 h-6 text-[#A1A89A] group-hover:text-white transition-colors"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-[#1A1F16] text-xl mb-3 group-hover:text-primary transition-colors">접지패드 부착</h4>
+                    <p class="text-sm text-[#6B7264] leading-relaxed keep-all font-light">안전한 고주파 에너지 흐름을 유도하기 위해 양쪽 허벅지에 전용 패드를 부착합니다.</p>
+                </div>
+
+                <div class="group bg-[#FBFBFA] p-10 rounded-[2.5rem] border border-[#E9E4DB] hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 reveal-on-scroll cursor-default" style="transition-delay: 0.1s;">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full uppercase tracking-wider border border-primary/5">Step 02</span>
+                        <div class="w-12 h-12 rounded-full bg-white border border-[#E9E4DB] flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                            <i data-lucide="moon" class="w-6 h-6 text-[#A1A89A] group-hover:text-white transition-colors"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-[#1A1F16] text-xl mb-3 group-hover:text-primary transition-colors">수면 마취</h4>
+                    <p class="text-sm text-[#6B7264] leading-relaxed keep-all font-light">전신마취의 부담 없이, 안전한 진정제를 투여하여 편안한 수면 상태를 유도합니다.</p>
+                </div>
+
+                <div class="group bg-[#FBFBFA] p-10 rounded-[2.5rem] border border-[#E9E4DB] hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 reveal-on-scroll cursor-default" style="transition-delay: 0.2s;">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full uppercase tracking-wider border border-primary/5">Step 03</span>
+                        <div class="w-12 h-12 rounded-full bg-white border border-[#E9E4DB] flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                            <i data-lucide="scan-line" class="w-6 h-6 text-[#A1A89A] group-hover:text-white transition-colors"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-[#1A1F16] text-xl mb-3 group-hover:text-primary transition-colors">정밀 탐색</h4>
+                    <p class="text-sm text-[#6B7264] leading-relaxed keep-all font-light">고해상도 초음파를 통해 병변의 위치, 크기, 혈류량을 실시간으로 정확히 파악합니다.</p>
+                </div>
+
+                <div class="group bg-[#FBFBFA] p-10 rounded-[2.5rem] border border-[#E9E4DB] hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 reveal-on-scroll cursor-default" style="transition-delay: 0.3s;">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full uppercase tracking-wider border border-primary/5">Step 04</span>
+                        <div class="w-12 h-12 rounded-full bg-white border border-[#E9E4DB] flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                            <i data-lucide="arrow-down-circle" class="w-6 h-6 text-[#A1A89A] group-hover:text-white transition-colors"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-[#1A1F16] text-xl mb-3 group-hover:text-primary transition-colors">전극 삽입</h4>
+                    <p class="text-sm text-[#6B7264] leading-relaxed keep-all font-light">질을 통해 접근하므로 복부 흉터 없이, 1mm 대의 얇은 전극을 안전하게 삽입합니다.</p>
+                </div>
+
+                <div class="group bg-[#FBFBFA] p-10 rounded-[2.5rem] border border-[#E9E4DB] hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 reveal-on-scroll cursor-default" style="transition-delay: 0.4s;">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full uppercase tracking-wider border border-primary/5">Step 05</span>
+                        <div class="w-12 h-12 rounded-full bg-white border border-[#E9E4DB] flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                            <i data-lucide="zap" class="w-6 h-6 text-[#A1A89A] group-hover:text-white transition-colors"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-[#1A1F16] text-xl mb-3 group-hover:text-primary transition-colors">고열 소작</h4>
+                    <p class="text-sm text-[#6B7264] leading-relaxed keep-all font-light">주변 장기 손상을 방지하기 위해 병변의 80~90%만 정밀하게 타격하여 괴사를 유도합니다.</p>
+                </div>
+
+                <div class="group bg-primary text-white p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden reveal-on-scroll hover:-translate-y-1 transition-transform duration-300" style="transition-delay: 0.5s;">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse-slow"></div>
+                    
+                    <div class="flex justify-between items-start mb-8 relative z-10">
+                        <span class="text-[10px] font-bold text-[#1A1F16] bg-white px-4 py-1.5 rounded-full uppercase tracking-wider">Option</span>
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                            <i data-lucide="plus" class="w-6 h-6 text-white"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-white text-xl mb-3 relative z-10 flex items-center gap-2">
+                        자궁내막 소작술
+                        <i data-lucide="sparkles" class="w-4 h-4 text-yellow-300"></i>
+                    </h4>
+                    <p class="text-sm text-white/70 leading-relaxed keep-all relative z-10 font-light">
+                        월경 과다가 동반되며 임신 계획이 없는 경우, 내막을 선택적으로 파괴하여 출혈을 획기적으로 감소시킵니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 lg:py-40 bg-white relative overflow-hidden">
+        
+        <div class="absolute -left-20 top-40 w-96 h-96 bg-[#F1F4ED] rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
+        <div class="absolute right-0 bottom-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 lg:mb-24 reveal-on-scroll">
+                <div>
+                    <span class="text-primary font-bold tracking-[0.6em] text-xs uppercase mb-6 block">Handwritten Stories</span>
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-serif text-[#1A1F16] leading-tight font-medium">
+                        진심이 머문 자리
+                    </h2>
+                    <p class="text-[#6B7264] mt-6 text-lg font-light">환자분들이 직접 남겨주신 기록은 우리의 가장 큰 자부심입니다.</p>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-3 text-primary font-bold text-sm tracking-widest hover:opacity-70 transition-opacity uppercase border-b border-primary pb-1 group">
+                    View All Reviews <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                
+                <div class="bg-[#F9F9F8] p-10 rounded-[3rem] relative group hover:-translate-y-2 transition-transform duration-500 border border-transparent hover:border-[#E9E4DB] hover:shadow-xl reveal-on-scroll-left">
+                    <i data-lucide="quote" class="w-12 h-12 text-[#E9E4DB] absolute top-10 right-10 group-hover:text-primary/20 transition-colors"></i>
+                    
+                    <div class="flex gap-1 text-[#FFB800] mb-6">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    
+                    <p class="text-[#3A4035] text-lg leading-relaxed mb-8 font-serif italic line-clamp-4 keep-all">
+                        "수술이 너무 무서워 1년을 고민했는데, 원장님 뵙고 확신이 생겼어요. 시술 당일 걸어서 퇴원할 때의 그 가벼운 기분은 잊지 못합니다. 지금은 배의 불편함도 싹 사라졌어요."
+                    </p>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary font-bold border border-[#E9E4DB] text-lg shadow-sm">김</div>
+                        <div>
+                            <p class="text-sm font-bold text-[#1A1F16]">김*희 님</p>
+                            <p class="text-xs text-[#A1A89A] mt-0.5">40대 / 다발성 자궁근종</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-primary p-10 rounded-[3rem] relative group hover:-translate-y-2 transition-transform duration-500 text-white shadow-2xl reveal-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full pointer-events-none"></div>
+                    
+                    <div class="flex flex-col items-center justify-center h-full text-center py-8">
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-6 backdrop-blur-md border border-white/20">
+                            <i data-lucide="pen-tool" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h4 class="text-4xl font-serif font-bold mb-4">1,500<span class="text-2xl text-[#A2AD91]">+</span></h4>
+                        <p class="text-white/80 mb-8 font-light leading-relaxed text-sm keep-all">
+                            꾸며지지 않은 환자분들의<br>생생한 자필 후기를 확인하세요.
+                        </p>
+                        <button class="bg-white text-primary px-8 py-3 rounded-full font-bold text-sm hover:bg-[#F1F4ED] transition-colors shadow-lg flex items-center gap-2">
+                            자필 후기 갤러리 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-[#F9F9F8] p-10 rounded-[3rem] relative group hover:-translate-y-2 transition-transform duration-500 border border-transparent hover:border-[#E9E4DB] hover:shadow-xl reveal-on-scroll-right" style="transition-delay: 0.2s;">
+                    <i data-lucide="quote" class="w-12 h-12 text-[#E9E4DB] absolute top-10 right-10 group-hover:text-primary/20 transition-colors"></i>
+                    
+                    <div class="flex gap-1 text-[#FFB800] mb-6">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    
+                    <p class="text-[#3A4035] text-lg leading-relaxed mb-8 font-serif italic line-clamp-4 keep-all">
+                        "미혼이라 흉터 걱정이 컸는데, 정말 흔적이 없어서 놀랐어요. 생리통도 사라지고 삶의 질이 수직 상승했습니다. 진작 할 걸 그랬어요."
+                    </p>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary font-bold border border-[#E9E4DB] text-lg shadow-sm">박</div>
+                        <div>
+                            <p class="text-sm font-bold text-[#1A1F16]">박*은 님</p>
+                            <p class="text-xs text-[#A1A89A] mt-0.5">30대 / 거대 근종</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-center md:hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-primary font-bold text-sm tracking-widest border-b border-primary pb-1">
+                    후기 전체보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 파트5 -->
+
+    <section id="tour" class="relative bg-white pt-24 lg:pt-40 pb-24">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            
+            <div class="text-center mb-20 lg:mb-32 reveal-on-scroll">
+                <span class="text-primary font-bold tracking-[0.6em] text-xs uppercase mb-6 block">Facility Tour</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#1A1F16] leading-tight mb-6">
+                    Experience Trinity
+                </h2>
+                <p class="text-[#6B7264] text-lg font-light">당신의 발걸음이 닿는 모든 순간, 깊은 배려를 담았습니다.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
+                
+                <div class="lg:w-1/2 hidden lg:block">
+                    <div class="sticky top-32 h-[calc(100vh-200px)] min-h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#E9E4DB]">
+                        
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-100 z-10" id="tour-img-0">
+                            <img src="./images/tour-entrance.jpg" class="w-full h-full object-cover" alt="Entrance" onerror="this.src='https://images.unsplash.com/photo-1519494080410-4f1e3ee27fa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">01. Entrance</span>
+                            </div>
+                        </div>
+
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0" id="tour-img-1">
+                            <img src="./images/tour-desk.jpg" class="w-full h-full object-cover" alt="Reception" onerror="this.src='https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">02. Reception</span>
+                            </div>
+                        </div>
+
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0" id="tour-img-2">
+                            <img src="./images/tour-lounge.jpg" class="w-full h-full object-cover" alt="Lounge" onerror="this.src='https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">03. Private Lounge</span>
+                            </div>
+                        </div>
+
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0" id="tour-img-3">
+                            <img src="./images/tour-consult.jpg" class="w-full h-full object-cover" alt="Consultation" onerror="this.src='https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">04. Consultation Room</span>
+                            </div>
+                        </div>
+
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0" id="tour-img-4">
+                            <img src="./images/tour-ultra.jpg" class="w-full h-full object-cover" alt="Ultrasound" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">05. Ultrasound</span>
+                            </div>
+                        </div>
+
+                        <div class="tour-image absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0" id="tour-img-5">
+                            <img src="./images/tour-recovery.jpg" class="w-full h-full object-cover" alt="Recovery" onerror="this.src='https://images.unsplash.com/photo-1512918760513-95f192972701?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 text-white">
+                                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/30">06. VIP Recovery</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 flex flex-col">
+                    
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 reveal-on-scroll" data-index="0">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-entrance.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1519494080410-4f1e3ee27fa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 01. Welcome</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            마음이 놓이는 공간,<br>병원 입구
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            트리니티에 오신 것을 환영합니다. 들어오시는 순간부터 진료가 끝날 때까지, 
+                            청결하고 쾌적한 환경에서 편안하게 모시겠습니다.
+                        </p>
+                    </div>
+
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 opacity-30 transition-opacity duration-500" data-index="1">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-desk.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 02. Reception</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            따뜻한 환대,<br>안내 데스크
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            전문 코디네이터가 예약 확인부터 접수까지 도와드립니다. 대기 시간을 최소화한 스마트 예약 시스템으로 바로 안내해 드립니다.
+                        </p>
+                    </div>
+
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 opacity-30 transition-opacity duration-500" data-index="2">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-lounge.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 03. Waiting Area</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            긴장을 푸는 쉼터,<br>아늑한 대기실
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            진료를 기다리는 시간조차 치유의 과정이 되도록, 넓고 쾌적한 좌석과 따뜻한 조명으로 편안한 분위기를 조성했습니다.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-[#555D4E] font-bold text-sm">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div> 쾌적한 공기 청정 시스템
+                            </li>
+                            <li class="flex items-center gap-3 text-[#555D4E] font-bold text-sm">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div> 편안한 소파와 티 서비스
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 opacity-30 transition-opacity duration-500" data-index="3">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-consult.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 04. Consultation</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            편하고 깊이있는 대화,<br>진료실
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            단순한 문진을 넘어, 환자의 라이프스타일까지 고려한 1:1 심층 상담이 이루어집니다. 당신의 이야기에 귀 기울이는 공간입니다.
+                        </p>
+                    </div>
+
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 opacity-30 transition-opacity duration-500" data-index="4">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-ultra.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 05. Ultrasound</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            정확한 눈,<br>정밀 초음파실
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            하이엔드 초음파 장비로 병변의 혈류와 위치를 입체적으로 분석합니다. 모니터를 함께 보며 현재 상태를 명확히 설명해 드립니다.
+                        </p>
+                    </div>
+
+                    <div class="tour-text-block min-h-[50vh] flex flex-col justify-center py-12 lg:py-0 opacity-30 transition-opacity duration-500" data-index="5">
+                        <div class="lg:hidden mb-6 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                            <img src="./images/tour-recovery.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1512918760513-95f192972701?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <span class="text-primary font-black text-xs uppercase tracking-widest mb-3 block">Step 06. Recovery</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-[#1A1F16] mb-4 serif">
+                            온전한 쉼,<br>1인 전용 회복실
+                        </h3>
+                        <p class="text-[#6B7264] text-base md:text-lg leading-relaxed mb-6 font-light keep-all">
+                            시술 후 호텔급 침구에서 편안하게 휴식을 취하세요. 보호자도 함께 머무를 수 있으며, 전담 간호사가 퇴원 시까지 케어합니다.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-24 lg:py-32 bg-[#F9F9F8] border-t border-[#E9E4DB]">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+                
+                <div class="lg:w-1/3 reveal-on-scroll">
+                    <span class="text-primary font-bold tracking-[0.4em] text-xs uppercase mb-6 block">Location</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#1A1F16] leading-tight mb-8">
+                        트리니티 여성의원<br>오시는 길
+                    </h2>
+                    
+                    <div class="space-y-10">
+                        <div class="flex gap-5 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white border border-[#E9E4DB] flex items-center justify-center flex-shrink-0 text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-[#1A1F16] mb-2">주소</h4>
+                                <p class="text-[#6B7264] leading-relaxed">
+                                    서울시 강남구 테헤란로 123<br>
+                                    트리니티 타워 4F (접수/진료), 5F (시술/회복)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white border border-[#E9E4DB] flex items-center justify-center flex-shrink-0 text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-[#1A1F16] mb-2">문의 전화</h4>
+                                <a href="tel:02-1234-5678" class="text-2xl font-serif font-bold text-primary hover:underline block mb-1">
+                                    02-1234-5678
+                                </a>
+                                <p class="text-xs text-[#A1A89A]">평일 09:30 - 18:00 (점심시간 13:00 - 14:00)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] border border-[#E9E4DB] shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-[#F1F4ED] rounded-bl-full -mr-4 -mt-4"></div>
+                            <div class="flex items-center gap-3 mb-4 relative z-10">
+                                <i data-lucide="car" class="w-6 h-6 text-primary"></i>
+                                <h4 class="font-bold text-[#1A1F16] text-lg">주차 안내</h4>
+                            </div>
+                            <p class="text-sm text-[#6B7264] leading-relaxed mb-4 relative z-10">
+                                건물 후면 주차장 입구에서 <strong>발렛 파킹 (Valet Parking)</strong> 서비스를 이용하실 수 있습니다.
+                            </p>
+                            <span class="inline-block bg-[#F1F4ED] text-primary text-xs font-bold px-3 py-1.5 rounded-lg">SUV/대형차량 가능</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    
+                    <div class="relative w-full h-[350px] lg:h-[450px] bg-[#E5E7EB] rounded-[3rem] overflow-hidden mb-8 border border-white shadow-inner group">
+                        <img src="./images/map-placeholder.jpg" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-100 group-hover:scale-105" alt="Map" onerror="this.src='https://placehold.co/1200x600/e0e0e0/999?text=Map+Visualization'">
+                        
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+                            <div class="relative">
+                                <div class="w-4 h-4 bg-primary rounded-full animate-ping absolute top-0 left-0 opacity-75"></div>
+                                <div class="w-4 h-4 bg-primary rounded-full relative z-10 border-2 border-white shadow-lg"></div>
+                            </div>
+                            <div class="mt-3 bg-white/95 backdrop-blur px-5 py-3 rounded-xl shadow-2xl text-center transform transition-transform hover:scale-110 duration-300">
+                                <p class="text-[10px] text-[#A2AD91] font-bold uppercase tracking-wider mb-1">Destination</p>
+                                <p class="text-sm font-bold text-[#1A1F16]">트리니티 여성의원</p>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-6 right-6 flex gap-3">
+                            <a href="https://map.naver.com" target="_blank" class="bg-white/90 hover:bg-[#03C75A] hover:text-white text-[#1A1F16] px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg transition-all flex items-center gap-2 backdrop-blur">
+                                N 네이버 지도
+                            </a>
+                            <a href="https://map.kakao.com" target="_blank" class="bg-white/90 hover:bg-[#FAE100] hover:text-[#3C1E1E] text-[#1A1F16] px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg transition-all flex items-center gap-2 backdrop-blur">
+                                K 카카오 맵
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex gap-5 p-8 bg-white rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F1F4ED] flex items-center justify-center flex-shrink-0 text-primary">
+                                <i data-lucide="train" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-[#1A1F16] mb-2 text-lg">지하철 이용 시</h5>
+                                <p class="text-sm text-[#6B7264] leading-relaxed">
+                                    <span class="font-bold text-[#00A84D]">2호선</span> 강남역 1번 출구 (도보 3분)<br>
+                                    <span class="font-bold text-[#D4003B]">신분당선</span> 강남역 3번 출구 (도보 5분)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5 p-8 bg-white rounded-[2rem] border border-[#E9E4DB] shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F1F4ED] flex items-center justify-center flex-shrink-0 text-primary">
+                                <i data-lucide="bus" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-[#1A1F16] mb-2 text-lg">버스 이용 시</h5>
+                                <p class="text-sm text-[#6B7264] leading-relaxed">
+                                    '강남역.역삼세무서' 정류장 하차<br>
+                                    <span class="text-xs text-[#A1A89A] mt-1 block">간선 146, 341, 360 / 지선 4312</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="consultation" class="relative py-24 lg:py-40 bg-[#2D3B1A] text-white overflow-hidden">
+        
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#3E522D] rounded-full blur-[150px] opacity-30 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#1A1F16] rounded-full blur-[120px] opacity-50 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
+            
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+                
+                <div class="lg:w-5/12 reveal-on-scroll">
+                    <span class="text-[#A2AD91] font-bold tracking-[0.4em] text-xs uppercase mb-6 block">Reservation</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-10 leading-tight">
+                        Your Care<br>
+                        <span class="text-[#A2AD91] italic">Starts Here.</span>
+                    </h2>
+                    
+                    <p class="text-white/70 text-lg font-light leading-relaxed mb-12 keep-all border-l border-white/20 pl-6">
+                        망설이지 말고 문의주세요. <br>
+                        전문 상담 간호사가 1:1로 배정되어 <br>
+                        진료 예약부터 비용 상담까지 친절하게 안내해 드립니다.
+                    </p>
+
+                    <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md mb-10">
+                        <h4 class="text-xl font-bold mb-6 flex items-center gap-3">
+                            <i data-lucide="clock" class="w-6 h-6 text-[#A2AD91]"></i> 진료 시간 안내
+                        </h4>
+                        <ul class="space-y-4 text-sm font-light text-white/80">
+                            <li class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-bold">평&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</span>
+                                <span>09:30 - 18:00</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-bold">토 요 일</span>
+                                <span>09:30 - 14:00 <span class="text-[#A2AD91] text-xs">(점심시간 없음)</span></span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-bold">점심시간</span>
+                                <span>13:00 - 14:00</span>
+                            </li>
+                            <li class="flex justify-between items-center text-white/50 pt-1">
+                                <span>일요일/공휴일</span>
+                                <span>휴진</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="tel:02-1234-5678" class="flex items-center gap-3 bg-white text-[#1A1F16] px-6 py-4 rounded-full font-bold hover:bg-[#A2AD91] hover:text-white transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5"></i> 02-1234-5678
+                        </a>
+                        <a href="#" class="flex items-center gap-3 bg-[#FAE300] text-[#3C1E1E] px-6 py-4 rounded-full font-bold hover:bg-[#FFEB3B] transition-colors">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> 카카오톡 상담
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="bg-white rounded-[3rem] p-8 lg:p-14 shadow-2xl text-[#1A1F16]">
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                            <span class="w-2 h-8 bg-primary rounded-full"></span>
+                            빠른 상담 신청
+                        </h3>
+                        
+                        <form id="consultation-form" class="space-y-6">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-xs font-bold text-[#A1A89A] uppercase tracking-wider mb-2">Name</label>
+                                    <input type="text" name="user_name" placeholder="성함을 입력해주세요" class="w-full bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:bg-white transition-colors" required>
+                                </div>
+                                <div class="group">
+                                    <label class="block text-xs font-bold text-[#A1A89A] uppercase tracking-wider mb-2">Phone</label>
+                                    <input type="tel" name="user_phone" placeholder="010-0000-0000" class="w-full bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:bg-white transition-colors" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-[#A1A89A] uppercase tracking-wider mb-3">Symptom (중복 선택 가능)</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="symptoms" value="자궁근종" class="peer sr-only">
+                                        <div class="text-sm font-medium text-[#6B7264] bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-4 py-3 text-center transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-[#F1F4ED]">
+                                            자궁근종
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="symptoms" value="자궁선근증" class="peer sr-only">
+                                        <div class="text-sm font-medium text-[#6B7264] bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-4 py-3 text-center transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-[#F1F4ED]">
+                                            자궁선근증
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="symptoms" value="생리과다/통증" class="peer sr-only">
+                                        <div class="text-sm font-medium text-[#6B7264] bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-4 py-3 text-center transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-[#F1F4ED]">
+                                            생리과다/통증
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="symptoms" value="난임/임신준비" class="peer sr-only">
+                                        <div class="text-sm font-medium text-[#6B7264] bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-4 py-3 text-center transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-[#F1F4ED]">
+                                            난임/임신준비
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-[#A1A89A] uppercase tracking-wider mb-2">Message</label>
+                                <textarea name="message" rows="4" placeholder="궁금하신 내용이나 원하시는 상담 시간대를 적어주세요." class="w-full bg-[#F9F9F8] border border-[#E9E4DB] rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:bg-white transition-colors resize-none"></textarea>
+                            </div>
+
+                            <div class="bg-[#F9F9F8] rounded-xl p-4 border border-[#E9E4DB]">
+                                <div class="flex items-start gap-3">
+                                    <input type="checkbox" id="privacy-check" class="mt-1 w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary cursor-pointer" required>
+                                    <label for="privacy-check" class="text-sm text-[#6B7264] cursor-pointer select-none leading-relaxed">
+                                        <span class="text-[#1A1F16] font-bold">[필수]</span> 개인정보 수집 및 이용에 동의합니다.
+                                        <br>
+                                        <span class="text-xs text-[#A1A89A]">입력하신 정보는 상담 목적으로만 사용되며, 진료 예약 외의 용도로 사용되지 않습니다.</span>
+                                    </label>
+                                    <button type="button" onclick="openModal('privacy-modal')" class="text-xs text-primary underline ml-auto whitespace-nowrap">전문보기</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary text-white font-bold text-lg py-5 rounded-xl shadow-lg hover:bg-[#2D3B1A] transition-all hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed">
+                                무료 상담 신청하기
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="privacy-modal" class="fixed inset-0 z-[999] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('privacy-modal')"></div>
+        
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-8 lg:p-12 max-h-[80vh] flex flex-col">
+            
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-[#1A1F16]">개인정보 수집 및 이용 약관</h3>
+                <button onclick="closeModal('privacy-modal')" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-6 h-6 text-[#1A1F16]"></i>
+                </button>
+            </div>
+
+            <div class="overflow-y-auto pr-4 space-y-4 text-sm text-[#6B7264] leading-relaxed custom-scrollbar border-y border-[#E9E4DB] py-6">
+                <p>
+                    <strong>1. 개인정보의 수집 및 이용 목적</strong><br>
+                    트리니티 여성의원(이하 '본원')은 진료 예약 및 상담 서비스를 제공하기 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                    - 수집항목 : 성명, 연락처, 증상 정보, 상담 내용<br>
+                    - 이용목적 : 진료 상담, 예약 안내, 해피콜 서비스 제공
+                </p>
+                <p>
+                    <strong>2. 개인정보의 보유 및 이용 기간</strong><br>
+                    개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 아래와 같이 관계 법령에서 정한 일정한 기간 동안 회원 정보를 보관합니다.<br>
+                    - 보존 항목 : 이름, 연락처, 진료 기록<br>
+                    - 보존 근거 : 의료법<br>
+                    - 보존 기간 : 5년 (진료기록부 10년)
+                </p>
+                <p>
+                    <strong>3. 동의 거부 권리</strong><br>
+                    귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 및 진료 예약 서비스 이용에 제한이 있을 수 있습니다.
+                </p>
+                <p>
+                    <strong>4. 개인정보의 파기 절차 및 방법</strong><br>
+                    본원은 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.<br>
+                    - 전자적 파일 형태 : 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제<br>
+                    - 종이 문서 : 분쇄기로 분쇄하거나 소각
+                </p>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="closeModal('privacy-modal')" class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-[#2D3B1A] transition-colors">
+                    확인했습니다
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        /* 모달 내 스크롤바 커스텀 */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F4ED;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #A2AD91;
+            border-radius: 3px;
+        }
+        
+        /* 모달 활성화 클래스 */
+        .modal-active {
+            display: block !important;
+            opacity: 1 !important;
+        }
+    </style>
+
+    <footer id="main-footer" class="bg-[#1A1F16] text-white/60 pt-20 pb-10 border-t border-white/10 relative z-10">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-4 space-y-6">
+                    <a href="#" class="inline-block mb-4 group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-[#F4EBE2] font-serif font-bold text-xl group-hover:bg-white group-hover:text-primary transition-colors">T</div>
+                            <div class="flex flex-col">
+                                <span class="text-white font-serif font-bold text-xl tracking-wide">TRINITY</span>
+                                <span class="text-[10px] tracking-[0.3em] uppercase text-[#A2AD91]">Women's Clinic</span>
+                            </div>
+                        </div>
+                    </a>
+                    <p class="text-sm leading-relaxed keep-all max-w-sm text-white/50">
+                        트리니티 여성의원은 여성의 건강과 아름다움을 지키기 위해 끊임없이 연구합니다. 
+                        대학병원급 장비와 마스터 의료진의 협진 시스템으로 최상의 의료 서비스를 제공합니다.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FAE300] hover:text-[#3C1E1E] transition-all" aria-label="Kakao Talk">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 3C5.373 3 0 7.378 0 12.778c0 3.52 2.29 6.623 5.727 8.375-.255.942-.924 3.42-.958 3.559-.044.183.067.362.228.362.062 0 .123-.026.168-.073 0 0 2.59-1.785 3.587-2.474.398.057.808.087 1.226.087 6.627 0 12-4.378 12-9.778C24 7.378 18.627 3 12 3z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all" aria-label="Instagram">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all" aria-label="YouTube">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0-.46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#03C75A] hover:text-white transition-all" aria-label="Blog">
+                            <span class="font-black text-xs">N</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h5 class="text-white font-bold mb-6 text-sm uppercase tracking-widest text-[#A2AD91]">Sitemap</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#about" class="hover:text-primary transition-colors">트리니티 소개</a></li>
+                        <li><a href="#academic" class="hover:text-primary transition-colors">의료진 소개</a></li>
+                        <li><a href="#process" class="hover:text-primary transition-colors">진료 프로세스</a></li>
+                        <li><a href="#case" class="hover:text-primary transition-colors">치료 사례</a></li>
+                        <li><a href="#tour" class="hover:text-primary transition-colors">시설 안내</a></li>
+                        <li><a href="#faq" class="hover:text-primary transition-colors">자주 묻는 질문</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h5 class="text-white font-bold mb-6 text-sm uppercase tracking-widest text-[#A2AD91]">Contact Info</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-1 text-[#A2AD91]"></i>
+                            <span>서울시 강남구 테헤란로 123<br>트리니티 타워 4F-5F</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 mt-1 text-[#A2AD91]"></i>
+                            <span>
+                                대표전화 : 02-1234-5678<br>
+                                팩스 : 02-1234-5679
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 mt-1 text-[#A2AD91]"></i>
+                            <span>info@trinity-clinic.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h5 class="text-white font-bold mb-6 text-sm uppercase tracking-widest text-[#A2AD91]">Hours</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Mon - Fri</span>
+                            <span class="text-white/80">09:30 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Saturday</span>
+                            <span class="text-white/80">09:30 - 14:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Lunch</span>
+                            <span class="text-white/80">13:00 - 14:00</span>
+                        </li>
+                        <li class="flex justify-between pt-1 text-white/40">
+                            <span>Sun / Holiday</span>
+                            <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+                <p>&copy; 2024 Trinity Women's Clinic. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">이용약관</a>
+                    <a href="#" class="hover:text-white transition-colors font-bold text-white/50">개인정보처리방침</a>
+                    <a href="#" class="hover:text-white transition-colors">비급여진료비 안내</a>
+                </div>
+            </div>
+            
+            <p class="mt-4 text-[10px] text-white/20 text-center md:text-left leading-relaxed">
+                사업자등록번호 : 123-45-67890 | 대표자 : 정난희, 양기열 | 의료기관명 : 트리니티의원<br>
+                본 사이트의 모든 컨텐츠는 저작권법의 보호를 받으며 무단 복제 및 도용을 금합니다.
+            </p>
+
+        </div>
+    </footer>
+
+    <div id="mobile-sticky-bar" class="fixed bottom-0 left-0 w-full z-[100] lg:hidden transform translate-y-full transition-transform duration-300">
+        <div class="bg-white border-t border-[#E9E4DB] flex shadow-[0_-4px_20px_rgba(0,0,0,0.1)] pb-safe">
+            <a href="tel:02-1234-5678" class="flex-1 flex flex-col items-center justify-center py-3 border-r border-[#E9E4DB] active:bg-gray-50 transition-colors">
+                <i data-lucide="phone" class="w-5 h-5 text-[#1A1F16] mb-1"></i>
+                <span class="text-xs font-bold text-[#1A1F16]">전화상담</span>
+            </a>
+            
+            <a href="#" class="flex-1 flex flex-col items-center justify-center py-3 active:bg-gray-50 transition-colors">
+                <i data-lucide="message-circle" class="w-5 h-5 text-[#1A1F16] mb-1"></i>
+                <span class="text-xs font-bold text-[#1A1F16]">카톡문의</span>
+            </a>
+            
+            <a href="#consultation" class="flex-[1.5] bg-primary flex items-center justify-center gap-2 py-3 active:bg-[#2D3B1A] transition-colors">
+                <span class="text-sm font-bold text-white">간편 예약신청</span>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-white/70"></i>
+            </a>
+        </div>
+        <div class="h-[env(safe-area-inset-bottom)] bg-white"></div>
+    </div>
+
+    <style>
+        /* 아이폰 하단 제스처 바 대응 */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* 스크롤 시 모바일 바 등장 애니메이션 클래스 */
+        .sticky-visible {
+            transform: translateY(0) !important;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // ------------------------------------------------------------------------------
+            // 1. GSAP Plugin Registration
+            // ------------------------------------------------------------------------------
+            gsap.registerPlugin(ScrollTrigger);
+
+            // ------------------------------------------------------------------------------
+            // 2. Global Reveal Animations (공통 등장이펙트)
+            // ------------------------------------------------------------------------------
+            
+            // Fade Up (기본)
+            gsap.utils.toArray('.reveal-on-scroll').forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1, y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Fade Left (왼쪽에서)
+            gsap.utils.toArray('.reveal-on-scroll-left').forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, x: -50 },
+                    {
+                        opacity: 1, x: 0,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%"
+                        }
+                    }
+                );
+            });
+
+            // Fade Right (오른쪽에서)
+            gsap.utils.toArray('.reveal-on-scroll-right').forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, x: 50 },
+                    {
+                        opacity: 1, x: 0,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%"
+                        }
+                    }
+                );
+            });
+
+            // Text Reveal (마스크 효과)
+            gsap.utils.toArray('.text-reveal').forEach(el => {
+                gsap.to(el, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    delay: el.dataset.delay || 0, // HTML에 설정된 delay 값 적용
+                    scrollTrigger: {
+                        trigger: el.parentElement, // 컨테이너가 보일 때 실행
+                        start: "top 85%"
+                    }
+                });
+            });
+
+            // ------------------------------------------------------------------------------
+            // 3. Number Counting Animation (통계 숫자)
+            // ------------------------------------------------------------------------------
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target'); // 최종 숫자
+                const isDecimal = target % 1 !== 0; // 소수점 여부 확인
+
+                gsap.to(counter, {
+                    innerHTML: target,
+                    duration: 2.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: counter,
+                        start: "top 85%",
+                        once: true
+                    },
+                    snap: { innerHTML: isDecimal ? 0.1 : 1 }, // 소수점 단위 스냅
+                    onUpdate: function() {
+                        // 소수점 1자리 혹은 정수로 포맷팅
+                        counter.innerHTML = isDecimal ? this.targets()[0].innerHTML : Math.round(this.targets()[0].innerHTML).toLocaleString();
+                    }
+                });
+            });
+
+            // ------------------------------------------------------------------------------
+            // 4. Side Navigation Scroll Spy (좌측 네비게이션 활성화)
+            // ------------------------------------------------------------------------------
+            const sections = ['hero', 'intro', 'targets', 'insight', 'comparison', 'academic', 'case', 'reviews', 'process', 'tour', 'location', 'consultation'];
+            const navItems = document.querySelectorAll('.side-guide .guide-item');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollPosition = window.scrollY + window.innerHeight / 3; // 뷰포트 1/3 지점 기준
+
+                sections.forEach(section => {
+                    const el = document.getElementById(section);
+                    if (el) {
+                        const top = el.offsetTop;
+                        const height = el.offsetHeight;
+                        if (scrollPosition >= top && scrollPosition < top + height) {
+                            current = section;
+                        }
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('data-target') === current) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // 모바일 하단 바 제어 (스크롤 방향에 따라 숨김/표시)
+                handleMobileBar();
+            });
+
+            // ------------------------------------------------------------------------------
+            // 5. Facility Tour Scrollytelling (시설 투어 스크롤 로직)
+            // ------------------------------------------------------------------------------
+            const tourImages = document.querySelectorAll('.tour-image');
+            const tourTexts = document.querySelectorAll('.tour-text-block');
+
+            // Intersection Observer 설정
+            const observerOptions = {
+                root: null,
+                rootMargin: "-40% 0px -40% 0px", // 화면 중앙 20% 영역에 들어올 때 감지
+                threshold: 0
+            };
+
+            const tourObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = entry.target.getAttribute('data-index');
+                        
+                        // 모든 이미지 숨김 (Opacity 0)
+                        tourImages.forEach(img => {
+                            img.style.opacity = '0';
+                            img.style.zIndex = '0';
+                        });
+
+                        // 해당 인덱스 이미지 표시 (Opacity 1)
+                        if(tourImages[index]) {
+                            tourImages[index].style.opacity = '1';
+                            tourImages[index].style.zIndex = '10';
+                        }
+
+                        // 텍스트 활성화 효과 (선택사항)
+                        tourTexts.forEach(text => text.style.opacity = '0.3');
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            tourTexts.forEach(text => {
+                tourObserver.observe(text);
+            });
+
+        }); // DOMContentLoaded End
+
+        // ------------------------------------------------------------------------------
+        // 6. Utility Functions (외부 호출 가능 함수들)
+        // ------------------------------------------------------------------------------
+
+        // 갤러리 필터링 (Academic Section)
+        function filterGallery(category) {
+            // 버튼 활성화 스타일 변경
+            document.querySelectorAll('.gallery-filter').forEach(btn => {
+                btn.classList.remove('bg-[#DDE4D5]', 'text-[#1A1F16]', 'shadow-lg'); // Active 제거
+                btn.classList.add('text-white/60', 'hover:text-white'); // Inactive 추가
+                
+                if (btn.id === `filter-${category}`) {
+                    btn.classList.remove('text-white/60', 'hover:text-white');
+                    btn.classList.add('bg-[#DDE4D5]', 'text-[#1A1F16]', 'shadow-lg');
+                }
+            });
+
+            // 갤러리 콘텐츠 전환
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                // 부드러운 전환을 위한 CSS 클래스 제어
+                if (group.id === `gallery-${category}`) {
+                    group.classList.remove('opacity-0', 'pointer-events-none', 'absolute', 'scale-95', 'translate-y-10');
+                    group.classList.add('opacity-100', 'relative', 'scale-100', 'translate-y-0', 'z-10');
+                } else {
+                    group.classList.remove('opacity-100', 'relative', 'scale-100', 'translate-y-0', 'z-10');
+                    group.classList.add('opacity-0', 'pointer-events-none', 'absolute', 'scale-95', 'translate-y-10');
+                }
+            });
+        }
+
+        // 모달 제어 (개인정보처리방침)
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            // 약간의 딜레이 후 opacity 변경하여 페이드인 효과
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // transition duration과 동일하게
+            document.body.style.overflow = ''; // 스크롤 복구
+        }
+
+        // 모바일 하단 바 스크롤 제어
+        let lastScrollY = window.scrollY;
+        const mobileBar = document.getElementById('mobile-sticky-bar');
+
+        function handleMobileBar() {
+            if (!mobileBar) return;
+            
+            const currentScrollY = window.scrollY;
+            
+            // 스크롤을 올리거나 최하단이 아닐 때 표시
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // 내릴 때: 숨김 (컨텐츠 집중)
+                mobileBar.classList.remove('translate-y-0');
+                mobileBar.classList.add('translate-y-full');
+            } else {
+                // 올릴 때: 표시
+                mobileBar.classList.remove('translate-y-full');
+                mobileBar.classList.add('translate-y-0');
+            }
+            lastScrollY = currentScrollY;
+        }
+
+        // 상담 폼 제출 (데모용)
+        const form = document.getElementById('consultation-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('상담 신청이 완료되었습니다.\n전문 상담사가 빠른 시일 내에 연락드리겠습니다.');
+                this.reset();
+            });
+        }
+
+        // 학술 갤러리 슬라이드 (간단 구현)
+        function changeSlide(id, dir) {
+            const container = document.getElementById(id);
+            const images = container.querySelectorAll('.slide-img');
+            let currentIdx = 0;
+            
+            images.forEach((img, idx) => {
+                if (img.classList.contains('opacity-100')) currentIdx = idx;
+                img.classList.remove('opacity-100', 'z-10');
+                img.classList.add('opacity-0', 'z-0');
+            });
+
+            let nextIdx = currentIdx + dir;
+            if (nextIdx >= images.length) nextIdx = 0;
+            if (nextIdx < 0) nextIndex = images.length - 1;
+
+            images[nextIdx].classList.remove('opacity-0', 'z-0');
+            images[nextIdx].classList.add('opacity-100', 'z-10');
+        }
+
+    </script>
+</body>
+</html>
